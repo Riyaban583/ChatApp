@@ -390,40 +390,7 @@ Client ────────────────────────�
 
 ---
 
-## 📸 Screenshots
 
-> 📷 Replace placeholder images below with your own screenshots (e.g. `./screenshots/login.png`)
-
-<div align="center">
-
-### 🔑 Login & Signup
-<img src="https://via.placeholder.com/800x450/1e1b4b/6366f1?text=Login+%26+Signup+Page" width="80%" />
-
-<br/><br/>
-
-### 💬 Chat Dashboard
-<img src="https://via.placeholder.com/800x450/0f172a/06b6d4?text=Real-Time+Chat+Dashboard" width="80%" />
-
-<br/><br/>
-
-### 👤 Profile Management
-<img src="https://via.placeholder.com/800x450/1e1b4b/8b5cf6?text=Profile+Management+Page" width="80%" />
-
-<br/>
-
-| 🟢 Online Users | 📩 Unread Messages |
-|---|---|
-| <img src="https://via.placeholder.com/380x220/022c22/22c55e?text=Online+Status+Panel" width="100%" /> | <img src="https://via.placeholder.com/380x220/1c1917/f97316?text=Unread+Message+Counters" width="100%" /> |
-
-</div>
-
----
-
-## 🗺️ Roadmap
-
-<div align="center">
-
-![Progress](https://img.shields.io/badge/Progress-40%25-6366f1?style=for-the-badge)
 
 </div>
 
