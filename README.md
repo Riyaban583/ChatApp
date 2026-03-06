@@ -50,10 +50,7 @@ Featuring message replies · emoji reactions · read receipts · pinned messages
 
 ---
 
-## 📋 Table of Contents
 
-<details>
-<summary>Click to expand full navigation</summary>
 
 - [📸 Screenshots](#-screenshots)
 - [✨ Features](#-features)
@@ -369,60 +366,6 @@ ChatApp/
 
 ---
 
-### Installation
-
-**1 — Clone**
-```bash
-git clone https://github.com/Riyaban583/ChatApp.git
-cd ChatApp
-```
-
-**2 — Install dependencies**
-```bash
-cd server && npm install
-cd ../client && npm install
-```
-
----
-
-### Environment Variables
-
-```bash
-cp server/.env.example server/.env
-```
-
-Edit `server/.env`:
-
-```env
-# ── Server ──────────────────────────────────────────────────
-PORT=5000
-NODE_ENV=development
-
-# ── Database ────────────────────────────────────────────────
-MONGO_URI=mongodb://localhost:27017/chatapp
-# Atlas: mongodb+srv://<user>:<pass>@cluster.mongodb.net/chatapp
-
-# ── Auth ────────────────────────────────────────────────────
-# Generate: node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
-JWT_SECRET=your_64_char_random_secret_here
-
-# ── Cloudinary ───────────────────────────────────────────────
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-
-# ── CORS ─────────────────────────────────────────────────────
-CLIENT_URL=http://localhost:5173
-```
-
-> 🔑 **Generate a secure JWT secret:**
-> ```bash
-> node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
-> ```
-
-> ⚠️ Never commit `.env` — it's already in `.gitignore`.
-
----
 
 ### Running the App
 
@@ -676,124 +619,7 @@ User  ─────M:N─────►  Message.deletedFor[]
 | Data exposure | Password never in any response | `.select("-password")` on all user queries |
 | Unauthorized access | `protectRoute` on all mutation routes | Applied to every PUT/POST/PATCH/DELETE |
 
-### Production Hardening (Recommended)
 
-```bash
-npm install express-rate-limit helmet express-mongo-sanitize
-```
-
-```javascript
-// server.js — add before routes
-import rateLimit from 'express-rate-limit';
-import helmet from 'helmet';
-import mongoSanitize from 'express-mongo-sanitize';
-
-app.use(helmet());                    // Security headers (CSP, HSTS, etc.)
-app.use(mongoSanitize());             // Strip $ and . from req body/params
-
-app.use('/api/auth', rateLimit({
-  windowMs: 15 * 60 * 1000,          // 15 minute window
-  max: 20,                           // Max 20 requests per window
-  message: { message: 'Too many requests, please try again later' }
-}));
-```
-
----
-
-## ⚡ Performance
-
-| Optimization | Technique | Impact |
-|:---|:---|:---|
-| DB queries | Compound index `{ senderId, receiverId, createdAt }` | O(log n) vs O(n) |
-| Images | Cloudinary CDN + `crop: fill, 400×400` for avatars | ~80% size reduction |
-| Search | 300ms debounce on input | ~90% fewer API calls while typing |
-| Socket routing | `Map<userId, socketId>` for O(1) lookups | Instant targeted delivery |
-| React renders | `useMemo` for image gallery + grouped reactions | Prevents recompute on every render |
-| Scroll | Auto-scroll only fires when within 100px of bottom | No jumps while reading history |
-| Animations | CSS-only with `animation-delay` stagger | GPU-accelerated, 0 JS overhead |
-| Bundle | Vite tree-shaking + per-route code splitting | Loads only what the current page needs |
-
-### Lighthouse Targets (Production Build)
-
-| Metric | Target |
-|:---:|:---:|
-| Performance | ≥ 90 |
-| Accessibility | ≥ 85 |
-| Best Practices | ≥ 90 |
-| SEO | ≥ 80 |
-
----
-
-## 🧪 Testing
-
-> Tests are a great first contribution! See [Contributing](#-contributing).
-
-### Recommended Setup
-
-```bash
-# Unit + component tests
-npm install --save-dev jest @testing-library/react @testing-library/user-event
-
-# API integration tests
-npm install --save-dev supertest
-
-# E2E tests
-npm install --save-dev cypress
-```
-
-### Example: React Component Test
-
-```javascript
-// src/__tests__/Sidebar.test.jsx
-import { render, screen } from '@testing-library/react';
-import Sidebar from '../components/Sidebar';
-
-test('shows unread badge when unreadCount > 0', () => {
-  render(<Sidebar users={[{ _id: '1', fullName: 'Alice', unreadCount: 3 }]} />);
-  expect(screen.getByText('3')).toBeInTheDocument();
-});
-```
-
-### Example: API Integration Test
-
-```javascript
-// server/__tests__/auth.test.js
-import request from 'supertest';
-import app from '../server.js';
-
-describe('POST /api/auth/signup', () => {
-  it('creates user and returns data without password', async () => {
-    const res = await request(app)
-      .post('/api/auth/signup')
-      .send({ fullName: 'Test', email: 'test@test.com', password: 'pass123' });
-
-    expect(res.statusCode).toBe(201);
-    expect(res.body._id).toBeDefined();
-    expect(res.body.password).toBeUndefined(); // Never exposed
-  });
-
-  it('rejects duplicate email with 409', async () => {
-    const res = await request(app)
-      .post('/api/auth/signup')
-      .send({ fullName: 'Test', email: 'test@test.com', password: 'pass123' });
-    expect(res.statusCode).toBe(409);
-  });
-});
-```
-
----
-
-## 🚀 Deployment Guide
-
-### Option A — Vercel + Render (Recommended Free Tier)
-
-#### Step 1 — Deploy Backend to Render
-
-1. Push code to GitHub
-2. [render.com](https://render.com) → **New Web Service** → connect repo
-3. Configure:
-
-```
 Root Directory:  server
 Build Command:   npm install
 Start Command:   npm start
@@ -1037,52 +863,7 @@ All notable changes are documented here. Format: [Keep a Changelog](https://keep
 
 Contributions make open source amazing — all contributions are **greatly appreciated**!
 
-### Getting Started
 
-```bash
-# 1. Fork on GitHub, then clone your fork
-git clone https://github.com/YOUR_USERNAME/ChatApp.git
-cd ChatApp
-
-# 2. Add upstream remote
-git remote add upstream https://github.com/Riyaban583/ChatApp.git
-
-# 3. Create a focused branch
-git checkout -b feat/your-feature-name
-# or: git checkout -b fix/bug-description
-
-# 4. Make changes, commit with Conventional Commits
-git commit -m "feat(chat): add voice message recording"
-# Types: feat | fix | docs | style | refactor | test | chore
-
-# 5. Stay up to date with upstream
-git fetch upstream && git rebase upstream/main
-
-# 6. Push and open a Pull Request
-git push origin feat/your-feature-name
-```
-
-### Commit Convention
-
-| Type | Use for |
-|:---:|:---|
-| `feat` | New feature |
-| `fix` | Bug fix |
-| `docs` | Documentation only |
-| `style` | Formatting, no logic change |
-| `refactor` | Code restructure without feat/fix |
-| `test` | Adding or updating tests |
-| `chore` | Deps, config, CI updates |
-
-### PR Checklist
-
-- [ ] Kept the PR small and focused on one change
-- [ ] Updated documentation if behavior changed
-- [ ] Added a screenshot for any UI changes
-- [ ] Wrote a clear PR description (what + why)
-- [ ] No `.env` or `node_modules` included
-
----
 
 ## 📄 License
 
