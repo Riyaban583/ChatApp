@@ -82,52 +82,7 @@ Featuring message replies · emoji reactions · read receipts · pinned messages
 
 ---
 
-## 📸 Screenshots
 
-<div align="center">
-
-<table>
-<tr>
-<td align="center" width="33%">
-<img src="screenshots/login.png" alt="Login Page" width="100%"/>
-<br/><sub><b>🔐 Login & Signup</b></sub>
-<br/><sub>JWT auth · form validation · toggle modes</sub>
-</td>
-<td align="center" width="33%">
-<img src="screenshots/chat.png" alt="Chat Dashboard" width="100%"/>
-<br/><sub><b>💬 Chat Dashboard</b></sub>
-<br/><sub>Real-time messages · reactions · typing indicator</sub>
-</td>
-<td align="center" width="33%">
-<img src="screenshots/profile.png" alt="Profile Page" width="100%"/>
-<br/><sub><b>👤 Profile Page</b></sub>
-<br/><sub>Avatar upload · bio · password change</sub>
-</td>
-</tr>
-<tr>
-<td align="center" width="33%">
-<img src="screenshots/sidebar.png" alt="Sidebar" width="100%"/>
-<br/><sub><b>📋 Smart Sidebar</b></sub>
-<br/><sub>Unread badges · online dots · last message</sub>
-</td>
-<td align="center" width="33%">
-<img src="screenshots/reactions.png" alt="Reactions" width="100%"/>
-<br/><sub><b>😍 Emoji Reactions</b></sub>
-<br/><sub>8 reactions · toggle · live synced</sub>
-</td>
-<td align="center" width="33%">
-<img src="screenshots/pinned.png" alt="Pinned" width="100%"/>
-<br/><sub><b>📌 Pinned Messages</b></sub>
-<br/><sub>Multi-pin bar · jump-to · right sidebar</sub>
-</td>
-</tr>
-</table>
-
-> 💡 Add your own screenshots by placing images in `/screenshots` and updating the paths above.
-
-</div>
-
----
 
 ## ✨ Features
 
