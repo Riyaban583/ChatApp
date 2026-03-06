@@ -522,34 +522,7 @@ VITE_API_URL    = https://your-app.onrender.com/api
 VITE_SOCKET_URL = https://your-app.onrender.com
 ```
 
-4. Deploy — Vercel auto-detects Vite ✨
 
-#### Step 3 — MongoDB Atlas
-
-1. [cloud.mongodb.com](https://cloud.mongodb.com/) → free M0 cluster
-2. **Database Access** → add user with readWrite
-3. **Network Access** → allow `0.0.0.0/0`
-4. **Connect** → copy connection string → paste into Render's `MONGO_URI`
-
----
-
-
-### [3.0.0] — Latest 🎉
-
-#### Added
-- 💬 Message reply/quote with jump-to-original click
-- ✏️ Edit own messages — synced live via Socket.io
-- 📌 Pin messages — cycling bar + right sidebar tab
-- 😊 30-emoji picker in input toolbar
-- 📅 Date separators between message groups
-- ⬇️ Scroll-to-bottom floating button
-- 🖼️ Full-screen image lightbox modal
-- 🗂️ Right sidebar 3-tab panel (Media / Pinned / Info)
-- 💬 Typing preview per-contact in sidebar list
-- 🔢 Global unread badge in sidebar header
-- ⏱️ Smart relative timestamps (now / 3m / Yesterday)
-- 📋 Copy message text to clipboard
-- 🔔 Background tab notification sound
 
 
 ## 🔮 Roadmap
@@ -582,27 +555,7 @@ Contributions make open source amazing — all contributions are **greatly appre
 
 
 
-## 📄 License
 
-Distributed under the **MIT License** — see [`LICENSE`](LICENSE) for full text.
-
-```
-MIT License — Copyright (c) 2024 Riya Bansal
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
-```
-
----
 
 <!-- FOOTER -->
 <div align="center">
@@ -613,18 +566,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 
 **Built with ❤️ by [Riya Bansal](https://github.com/Riyaban583)**
 
-<br/>
-
-[![GitHub Follow](https://img.shields.io/github/followers/Riyaban583?label=Follow%20%40Riyaban583&style=social)](https://github.com/Riyaban583)
-&nbsp;&nbsp;
-[![Star this repo](https://img.shields.io/github/stars/Riyaban583/ChatApp?style=social)](https://github.com/Riyaban583/ChatApp)
-
-<br/>
-
-*If ChatApp helped you learn or build something — a ⭐ star genuinely means a lot!*
-
-<br/>
-
-`React` · `Node.js` · `MongoDB` · `Socket.io` · `Express` · `JWT` · `Cloudinary` · `Vite`
 
 </div>
