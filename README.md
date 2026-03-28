@@ -60,7 +60,7 @@
 - ⚡ Real-time WebSocket communication
 - 🔐 Secure JWT authentication
 - 🏗️ Scalable REST API design
-- 🎨 Modern React frontend architecture
+- 🎨 Modern React frontend architecture of website
 
 Whether you're exploring WebSocket-based communication or using this as a foundation for your own project, ChatApp covers the fundamentals with clean, readable, well-structured code.
 
