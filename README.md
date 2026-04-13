@@ -81,7 +81,7 @@ Whether you're exploring WebSocket-based communication or using this as a founda
 - User registration & login flows
 - **JWT-based** session management
 - Protected routes on client & server
-- Passwords hashed with **bcrypt**
+- Passwords hashed with JWT authentication. **bcrypt**
 
 ### 💬 Real-Time Messaging
 ![Socket](https://img.shields.io/badge/-Socket.io%20Powered-010101?style=flat-square&logo=socket.io)
