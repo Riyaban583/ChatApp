@@ -209,7 +209,7 @@ ChatApp/
 │   └── 📁 src/
 │       ├── 📁 assets/               # 🖼️  Static assets
 │       ├── 📁 components/
-│       │   ├── ChatContainer.jsx    # 💬 Main message window
+│       │   ├── ChatContainer.jsx    # 💬 Main message window and chats 
 │       │   ├── Sidebar.jsx          # 👥 User list & search bar
 │       │   └── RightSidebar.jsx     # ℹ️  Selected user info panel
 │       │
