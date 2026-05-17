@@ -64,7 +64,7 @@
 
 Whether you're exploring WebSocket-based communication or using this as a foundation for your own project, ChatApp covers the fundamentals with clean, readable, well-structured code.
 
-> 💡 **Key highlight:** Every message is delivered **instantly** via Socket.io — no polling, no delays, no refresh needed.
+> 💡 **Key highlight:** Every message is delivered **instantly** via Socket.io — no polling, no delays, no refresh needed in Chats.
 
 <br clear="right"/>
 
