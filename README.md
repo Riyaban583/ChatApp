@@ -411,7 +411,7 @@ Client ────────────────────────�
 - [ ] 🎥 Voice & video calling (WebRTC)
 - [ ] 🌙 Dark / light mode toggle
 - [ ] 📱 Progressive Web App (PWA) support
-- [ ] 🌍 Multi-language support (i18n)
+- [ ] 🌍 Multi-language support (i18n) in chat app
 
 ---
 
