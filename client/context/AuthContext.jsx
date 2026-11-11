@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
@@ -17,8 +17,50 @@ export const AuthProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // ---------------- SOCKET CONNECTION ----------------
+  const connectSocket = useCallback((userData) => {
+
+    if (!userData) return;
+
+    const newSocket = io(backendUrl, {
+      query: { userId: userData._id }
+    });
+
+    setSocket(newSocket);
+
+    newSocket.on("connect", () => {
+      console.log("Socket Connected:", newSocket.id);
+    });
+
+    newSocket.on("getOnlineUsers", (users) => {
+      console.log("Online Users:", users);
+      setOnlineUsers(users);
+    });
+
+  }, []);
+
+  // ---------------- LOGOUT ----------------
+  const logout = useCallback(() => {
+
+    localStorage.removeItem("token");
+
+    setToken(null);
+    setAuthUser(null);
+    setOnlineUsers([]);
+
+    delete axios.defaults.headers.common["Authorization"];
+
+    setSocket((prevSocket) => {
+      if (prevSocket) prevSocket.disconnect();
+      return null;
+    });
+
+    toast.success("Logged out");
+
+  }, []);
+
   // ---------------- CHECK AUTH ----------------
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
 
     try {
 
@@ -44,7 +86,7 @@ export const AuthProvider = ({ children }) => {
 
     }
 
-  };
+  }, [token, connectSocket, logout]);
 
   // ---------------- LOGIN / SIGNUP ----------------
   const login = async (state, credentials) => {
@@ -81,26 +123,6 @@ export const AuthProvider = ({ children }) => {
 
   };
 
-  // ---------------- LOGOUT ----------------
-  const logout = () => {
-
-    localStorage.removeItem("token");
-
-    setToken(null);
-    setAuthUser(null);
-    setOnlineUsers([]);
-
-    delete axios.defaults.headers.common["Authorization"];
-
-    if (socket) {
-      socket.disconnect();
-      setSocket(null);
-    }
-
-    toast.success("Logged out");
-
-  };
-
   // ---------------- UPDATE PROFILE ----------------
   const updateProfile = async (body) => {
 
@@ -124,32 +146,6 @@ export const AuthProvider = ({ children }) => {
 
   };
 
-  // ---------------- SOCKET CONNECTION ----------------
-  const connectSocket = (userData) => {
-
-    if (!userData) return;
-
-    const newSocket = io(backendUrl, {
-      query: { userId: userData._id }
-    });
-
-    setSocket(newSocket);
-
-    newSocket.on("connect", () => {
-
-      console.log("Socket Connected:", newSocket.id);
-
-    });
-
-    newSocket.on("getOnlineUsers", (users) => {
-
-      console.log("Online Users:", users);
-      setOnlineUsers(users);
-
-    });
-
-  };
-
   // ---------------- INITIAL LOAD ----------------
   useEffect(() => {
 
@@ -164,7 +160,7 @@ export const AuthProvider = ({ children }) => {
 
     }
 
-  }, [token]);
+  }, [token, checkAuth]);
 
   const value = {
     axios,

@@ -48,10 +48,10 @@ const ChatContainer = () => {
 
   // load messages
   useEffect(()=>{
-    if(selectedUser){
+    if(selectedUser?._id){
       getMessages(selectedUser._id)
     }
-  },[selectedUser])
+  },[selectedUser, getMessages])
 
   // auto scroll
   useEffect(()=>{
